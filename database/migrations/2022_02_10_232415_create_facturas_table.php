@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
+            $table->integer('cantidad');
+            $table->double('precio');
+            $table->foreignId('id_cliente')->constrained('clientes');
+
+
             $table->timestamps();
         });
     }

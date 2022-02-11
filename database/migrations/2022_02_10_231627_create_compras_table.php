@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha_compra');
+            $table->float('costo_compra');
+
+            $table->foreignId('id_proveedor')->constrained('proveedors');
+            
+            
             $table->timestamps();
         });
     }

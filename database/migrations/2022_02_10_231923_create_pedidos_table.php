@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha_pedido');
+            $table->double('total_venta',100);
+            $table->foreignId('id_cliente')->constrained('clientes');
+            
             $table->timestamps();
         });
     }

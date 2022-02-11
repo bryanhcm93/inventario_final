@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('detalle__pedidos', function (Blueprint $table) {
             $table->id();
+            $table->integer('cantidad');
+            $table->double('precio');
+            $table->char('estado_pedido',1);
+            $table->foreignId('id_producto')->constrained('productos');
             $table->timestamps();
         });
     }

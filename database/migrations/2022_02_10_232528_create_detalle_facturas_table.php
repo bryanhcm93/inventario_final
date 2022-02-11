@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('detalle_facturas', function (Blueprint $table) {
             $table->id();
+            $table->integer('cantidad');
+            $table->double('precio');
+            $table->char('estado_pedido');
+            $table->foreignId('id_producto')->constrained('productos');
             $table->timestamps();
         });
     }
