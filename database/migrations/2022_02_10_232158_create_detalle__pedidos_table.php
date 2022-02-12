@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('cantidad');
             $table->double('precio');
-            $table->char('estado_pedido',1);
+            $table->char('estado_pedido',2);
             $table->foreignId('id_producto')->constrained('productos');
             $table->timestamps();
         });

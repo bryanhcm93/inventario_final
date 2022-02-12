@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -21,7 +21,7 @@ class CategoriaController extends Controller
        
        $categoria->nombre = $request->nombre;
        $categoria->descripcion = $request->descripcion;
-       $categoria->estado = $request->estado;
+       $categoria->estado = $request->edo;
    
 
        $categoria->save();

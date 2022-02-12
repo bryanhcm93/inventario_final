@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\DetalleFactura;
 class DetalleFacturaController extends Controller
 {
     public function index(){
