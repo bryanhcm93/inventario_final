@@ -6,5 +6,41 @@ use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
 {
-    //
+    public function index(){
+        
+        $empleado = Empleado::get();
+        return [
+            'Empleados' => $empleado
+        ];
+    }
+
+
+
+    public function store (Request $request){
+       $empleado = new Empleado();
+       
+       $empleado->nombre_empleado = $request->nombreEmpleado;
+       $empleado->telefono_empleado = $request->telefonoEmpleado;
+       $empleado->nombre_cargo = $request->nombreCargo;
+       
+         
+
+       $empleado->save();
+    }
+
+    public function update(Request $request) {
+        $empleado = Empleado::findOrFail($request->id);
+        $empleado->nombre_empleado = $request->nombreEmpleado;
+       $empleado->telefono_empleado = $request->telefonoEmpleado;
+       $empleado->nombre_cargo = $request->nombreCargo;
+
+
+        $empleado->save();
+        
+    }
+
+    public function delete(Request $request) {
+        $empleado = Empleado::findOrFail($request->id);    
+        $empleado->delete();
+    }
 }

@@ -21,6 +21,7 @@ class CompraController extends Controller
        
        $compra->fecha_compra = $request->fechaCompra;
        $compra->costo_compra = $request->costoCompra;
+       $compra->nombre_proveedor = $request->nombreProveedor;
        
          
 
@@ -31,6 +32,7 @@ class CompraController extends Controller
         $compra = Compra::findOrFail($request->id);
         $compra->fecha_compra = $request->fechaCompra;
        $compra->costo_compra = $request->costoCompra;
+       $compra->nombre_proveedor = $request->nombreProveedor;
 
 
         $compra->save();

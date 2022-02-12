@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->date('fecha_compra');
             $table->float('costo_compra');
+            $table->string('nombre_proveedor',100);
 
             $table->foreignId('id_proveedor')->constrained('proveedors');
             
