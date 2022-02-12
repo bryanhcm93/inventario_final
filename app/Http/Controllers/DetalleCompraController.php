@@ -41,7 +41,7 @@ class DetalleCompraController extends Controller
         
     }
 
-    public function delete(Request $request) {
+    public function destroy(Request $request) {
         $detallecompra = detalleCompra::findOrFail($request->id);    
         $detallecompra->delete();
     }

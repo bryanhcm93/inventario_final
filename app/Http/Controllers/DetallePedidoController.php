@@ -41,7 +41,7 @@ class DetallePedidoController extends Controller
         
     }
 
-    public function delete(Request $request) {
+    public function destroy(Request $request) {
         $detallepedido = DetallePedido::findOrFail($request->id);    
         $detallepedido->delete();
     }

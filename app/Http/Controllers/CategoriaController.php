@@ -38,7 +38,7 @@ class CategoriaController extends Controller
         
     }
 
-    public function delete(Request $request) {
+    public function destroy(Request $request) {
         $categoria = Categoria::findOrFail($request->id);    
         $categoria->delete();
     }

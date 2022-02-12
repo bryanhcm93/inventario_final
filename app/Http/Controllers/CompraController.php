@@ -39,7 +39,7 @@ class CompraController extends Controller
         
     }
 
-    public function delete(Request $request) {
+    public function destroy(Request $request) {
         $compra = Compra::findOrFail($request->id);    
         $compra->delete();
     }

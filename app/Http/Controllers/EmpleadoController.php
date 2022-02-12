@@ -39,7 +39,7 @@ class EmpleadoController extends Controller
         
     }
 
-    public function delete(Request $request) {
+    public function destroy(Request $request) {
         $empleado = Empleado::findOrFail($request->id);    
         $empleado->delete();
     }

@@ -43,7 +43,7 @@ class ClienteController extends Controller
         
     }
 
-    public function delete(Request $request) {
+    public function destroy(Request $request) {
         $cliente = Cliente::findOrFail($request->id);    
         $cliente->delete();
     }

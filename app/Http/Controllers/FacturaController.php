@@ -38,7 +38,7 @@ class FacturaController extends Controller
         
     }
 
-    public function delete(Request $request) {
+    public function destroy(Request $request) {
         $factura = Factura::findOrFail($request->id);    
         $factura->delete();
     }

@@ -39,7 +39,7 @@ class ProveedorController extends Controller
         
     }
 
-    public function delete(Request $request) {
+    public function destroy(Request $request) {
         $proveedor = Proveedor::findOrFail($request->id);    
         $proveedor->delete();
     }

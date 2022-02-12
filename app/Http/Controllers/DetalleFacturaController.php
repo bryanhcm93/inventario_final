@@ -42,7 +42,7 @@ class DetalleFacturaController extends Controller
         
     }
 
-    public function delete(Request $request) {
+    public function destroy(Request $request) {
         $detallefactura = DetalleFactura::findOrFail($request->id);    
         $detallefactura->delete();
     }

@@ -37,7 +37,7 @@ class CargoController extends Controller
         
     }
 
-    public function delete(Request $request) {
+    public function destroy(Request $request) {
         $cargo = Cargo::findOrFail($request->id);    
         $cargo->delete();
     }
