@@ -20,7 +20,19 @@
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                    Inicio
+                                </jet-nav-link>
+                                    <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Productos
+                                </jet-nav-link>
+                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Proveedores
+                                </jet-nav-link>
+                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Compras
+                                </jet-nav-link>
+                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Ventas
                                 </jet-nav-link>
                             </div>
                         </div>
@@ -46,12 +58,12 @@
                                             <!-- Team Management -->
                                             <template v-if="$page.props.jetstream.hasTeamFeatures">
                                                 <div class="block px-4 py-2 text-xs text-gray-400">
-                                                    Manage Team
+                                                    administrar equipos
                                                 </div>
 
                                                 <!-- Team Settings -->
                                                 <jet-dropdown-link :href="route('teams.show', $page.props.user.current_team)">
-                                                    Team Settings
+                                                    Configurar equipo
                                                 </jet-dropdown-link>
 
                                                 <jet-dropdown-link :href="route('teams.create')" v-if="$page.props.jetstream.canCreateTeams">
@@ -103,11 +115,11 @@
                                     <template #content>
                                         <!-- Account Management -->
                                         <div class="block px-4 py-2 text-xs text-gray-400">
-                                            Manage Account
+                                            Administrar cuenta
                                         </div>
 
                                         <jet-dropdown-link :href="route('profile.show')">
-                                            Profile
+                                            Perfil
                                         </jet-dropdown-link>
 
                                         <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
@@ -119,7 +131,7 @@
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <jet-dropdown-link as="button">
-                                                Log Out
+                                                Cerrar sesion
                                             </jet-dropdown-link>
                                         </form>
                                     </template>
