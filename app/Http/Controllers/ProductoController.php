@@ -3,16 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use App\Models\Producto;
 class ProductoController extends Controller
 {
     public function index(){
         
-        $producto = Producto::get();
-            return [
-                'Productos' =>$producto
-            ];
+        $producto = Producto::all();
+        return Inertia::render('Productos',['Productos'=>$producto]);
+            // return [
+            //     'Productos' =>$producto
+            // ];
         }
+        public function indexData(){
+        
+            $producto = Producto::all();
+           
+                return [
+                    'Productos' =>$producto
+                ];
+            }
+
+
     
     
     

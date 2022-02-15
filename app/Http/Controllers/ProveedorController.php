@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use App\Models\Proveedor;
 class ProveedorController extends Controller
 {
+
     public function index(){
         
-        $proveedor = Proveedor::get();
-        return [
-            'Proveedors' => $proveedor
-        ];
+        $proveedor = Proveedor::all();
+        return Inertia::render('Proveedores',['Proveedores' => $proveedor]);
+
+        // return [
+        //     'Proveedores' => $proveedor
+        // ];
     }
 
 

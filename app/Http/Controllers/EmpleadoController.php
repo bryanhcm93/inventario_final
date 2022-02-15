@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use App\Models\Empleado;
 class EmpleadoController extends Controller
 {
     public function index(){
         
-        $empleado = Empleado::get();
-        return [
-            'Empleados' => $empleado
-        ];
+        $empleado = Empleado::all();
+return Inertia::render('Empleados',['Empleados'=>$empleado]);
+        // return [
+        //     'Empleados' => $empleado
+        // ];
     }
 
 

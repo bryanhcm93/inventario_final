@@ -22,18 +22,22 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Inicio
                                 </jet-nav-link>
-                                    <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                                    <jet-nav-link :href="route('producto')" :active="route().current('producto')">
                                     Productos
                                 </jet-nav-link>
-                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                                   <jet-nav-link :href="route('proveedor')" :active="route().current('proveedor')">
                                     Proveedores
                                 </jet-nav-link>
-                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Compras
+                                
+                                 <jet-nav-link :href="route('cliente')" :active="route().current('cliente')">
+                                    Clientes
                                 </jet-nav-link>
-                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Ventas
+
+                                  <jet-nav-link :href="route('empleado')" :active="route().current('empleado')">
+                                    Empleados
                                 </jet-nav-link>
+                                
+
                             </div>
                         </div>
 

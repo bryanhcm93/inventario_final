@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Models\Cliente;
+use Inertia\Inertia;
 class ClienteController extends Controller
 {
      public function index(){
         
-        $cliente = Cliente::get();
-        return [
-            'Clientes' => $cliente
-        ];
+        $cliente = Cliente::all();
+        return Inertia::render('Clientes',['Clientes'=>$cliente]);
+        // return [
+        //     'Clientes' => $cliente
+        // ];
     }
 
 
