@@ -21,7 +21,7 @@ class ClienteController extends Controller
 
     public function store (Request $request){
        $cliente = new Cliente();
-       
+       $cliente->cedula_cliente = $request->cedulaCliente;
        $cliente->nombre_cliente = $request->nombreCliente;
        $cliente->telefono_cliente = $request->telefonoCliente;
        $cliente->email_cliente = $request->emailCliente;
@@ -35,6 +35,7 @@ class ClienteController extends Controller
 
     public function update(Request $request) {
         $cliente = Cliente::findOrFail($request->id);
+        $cliente->cedula_cliente = $request->cedulaCliente;
         $cliente->nombre_cliente = $request->nombreCliente;
         $cliente->telefono_cliente = $request->telefonoCliente;
         $cliente->email_cliente = $request->emailCliente;

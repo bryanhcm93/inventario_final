@@ -45,6 +45,31 @@
                     placeholder="Proveedor de la empresa"
                   />
                 </div>
+                <div class="mb-4">
+                  <label
+                    class="block text-gray-700 text-sm font-bold mb-2"
+                    for="Nit proveedor"
+                  >
+                    Nit  proveedor
+                  </label>
+                  <input
+                    class="
+                      shadow
+                      appearance-none
+                      border
+                      rounded
+                      w-full
+                      py-2
+                      px-3
+                      text-gray-700
+                      leading-tight
+                      focus:outline-none focus:shadow-outline
+                    "
+                    v-model="nitProveedor"
+                    type="text"
+                    placeholder="Proveedor de la empresa"
+                  />
+                </div>
 
                 <div class="mb-4">
                   <label
@@ -136,7 +161,7 @@ import axios from 'axios';
         data(){
             return{ 
 
-
+nitProveedor:"",
 nombreProveedor:"",
 telefonoProveedor:"",
 direccionProveedor:"",
@@ -174,6 +199,7 @@ let me = this;
 var url = "/api/proveedor/registrar";
 axios.post(url,
  {
+     nitProveedor:this.nitProveedor,
      nombreProveedor:this.nombreProveedor,
      telefonoProveedor:this.telefonoProveedor,
      direccionProveedor:this.direccionProveedor,
