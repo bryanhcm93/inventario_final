@@ -121,6 +121,7 @@ Route::middleware(['auth:sanctum'])->delete('/api/pedido/eliminar', [PedidoContr
 
 
 Route::middleware(['auth:sanctum'])->get('/api/producto', [ProductoController::class, 'index'])->name('producto');
+Route::middleware(['auth:sanctum'])->get('/api/producto/data', [ProductoController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/producto/registrar', [ProductoController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/producto/actualizar', [ProductoController::class, 'update']);
 Route::middleware(['auth:sanctum'])->delete('/api/producto/eliminar', [ProductoController::class, 'destroy']);
