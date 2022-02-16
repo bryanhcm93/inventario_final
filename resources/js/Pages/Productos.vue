@@ -125,7 +125,8 @@
 
                 <div class="flex items-center justify-between">
                   <button
-                   
+                  type="button"
+                   @click="regProductos()"
                     class="
                       bg-blue-500
                       hover:bg-blue-700
@@ -134,9 +135,7 @@
                       py-2
                       px-4
                       rounded
-                      focus:outline-none focus:shadow-outline
-                    " onclick="alert('buuu)"
-                    type="button" 
+                      focus:outline-none focus:shadow-outline"                  
                   >
                     Guardar
                   </button>
@@ -191,16 +190,19 @@ axios.get(url)
 })  
 
 },
+metodo(msj){
+    alert(msj);
+},
 
 
 regProductos(){
 let me = this;
-var url = "*/api/producto/registrar";
-axios .post(url,
+var url = "/api/producto/registrar";
+axios.post(url,
  {
      cantidad:this.cantidad,
      nombre:this.nombre,
-     medidad:this.medidad,
+     medida:this.medida,
     categoria:this.categoria,
 
  }).then(function(response)

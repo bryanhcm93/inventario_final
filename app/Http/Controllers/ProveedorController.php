@@ -18,14 +18,23 @@ class ProveedorController extends Controller
         // ];
     }
 
+    public function indexData(){
+        
+        $producto = Producto::all();
+       
+            return [
+                'Proveedores' =>$proveedor
+            ];
+        }
+
 
 
     public function store (Request $request){
        $proveedor = new Proveedor();
        
-       $proveedor->nombre_empleado = $request->nombreEmpleado;
-       $proveedor->telefono_empleado = $request->telefonoEmpleado;
-       $proveedor->nombre_cargo = $request->nombreCargo;
+       $proveedor->nombre_proveedor = $request->nombreProveedor;
+       $proveedor->telefono_proveedor = $request->telefonoProveedor;
+       $proveedor->direccion_proveedor = $request->direccionProveedor;
        
          
 
@@ -34,9 +43,9 @@ class ProveedorController extends Controller
 
     public function update(Request $request) {
         $proveedor = Proveedor::findOrFail($request->id);
-        $proveedor->nombre_empleado = $request->nombreEmpleado;
-       $proveedor->telefono_empleado = $request->telefonoEmpleado;
-       $proveedor->nombre_cargo = $request->nombreCargo;
+        $proveedor->nombre_proveedor = $request->nombreProveedor;
+       $proveedor->telefono_proveedor = $request->telefonoProveedor;
+       $proveedor->cargo_proveedor = $request->cargoProveedor;
 
 
         $proveedor->save();
