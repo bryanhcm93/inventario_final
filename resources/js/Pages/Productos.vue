@@ -277,7 +277,49 @@
             />
           </div>
 
-          <div class="flex items-center justify-between">
+          <!-- <div class="flex items-center justify-between">
+            
+          </div> -->
+         
+
+          <div class="flex flex-row items-center justify-end p-5 bg-white border-gray-200">
+            <button
+            v-if="opcBoton == false"
+            type="button"
+            @click="actualizarProducto()"
+            class="
+              bg-blue-500
+              hover:bg-blue-700
+              text-white
+              font-bold
+              py-2
+              px-4
+               mr-5
+              rounded
+              focus:outline-none focus:shadow-outline
+            "
+          >
+            Actualizar
+          </button>
+
+            <button
+              type="button"
+              @click="cerrarP()"
+              class="
+                bg-gray-500
+                hover:bg-black-700
+                text-white
+                font-bold
+                py-2
+                px-4
+                mr-5
+                rounded
+                focus:outline-none focus:shadow-outline
+              "
+            >
+              Cerrar
+            </button>
+
             <button
               v-if="opcBoton == true"
               type="button"
@@ -294,45 +336,6 @@
               "
             >
               Guardar
-            </button>
-          </div>
-          <br />
-
-          <button
-            v-if="opcBoton == false"
-            type="button"
-            @click="actualizarProducto()"
-            class="
-              bg-blue-500
-              hover:bg-blue-700
-              text-white
-              font-bold
-              py-2
-              px-4
-              rounded
-              focus:outline-none focus:shadow-outline
-            "
-          >
-            actualizar
-          </button>
-          <br />
-
-          <div class="flex items-center justify-between">
-            <button
-              type="button"
-              @click="cerrarP()"
-              class="
-                bg-gray-500
-                hover:bg-black-700
-                text-white
-                font-bold
-                py-2
-                px-4
-                rounded
-                focus:outline-none focus:shadow-outline
-              "
-            >
-              Cerrar
             </button>
           </div>
           <br />
