@@ -183,7 +183,7 @@ export default defineComponent({
         });
     },
 
-    verProducto() {
+    verEmpleado() {
       alert("Boton ver ok");
     },
   },

@@ -6,7 +6,8 @@
       </h2>
     </template>
 
-    <button v-if="tpAccion==0"
+    <button
+      v-if="tpAccion == 0"
       @click="nuevoP"
       type="button"
       class="
@@ -27,7 +28,7 @@
     >
       Nuevo Producto
     </button>
-
+    <!-- menu principal de productos -->
     <div class="overflow-x-auto" v-if="tpAccion == 0">
       <div class="w-full lg:w-5/6">
         <div class="bg-white shadow-md rounded my-6">
@@ -116,6 +117,8 @@
                         transform
                         hover:text-purple-500 hover:scale-110
                       "
+                      title="editar"
+                      @click="editarProducto(objeto)"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -138,6 +141,8 @@
                         transform
                         hover:text-purple-500 hover:scale-110
                       "
+                      title="eliminar"
+                      @click="eliminarProducto(objeto)"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -162,10 +167,11 @@
       </div>
     </div>
 
-    <!-- <h1>prueba de formulario</h1> -->
+    <!-- <h1> formulario productos</h1> -->
 
     <div>
-      <div class="w-full max-w-m"  v-if="tpAccion == 1" >
+      <div class="w-full max-w-m" v-if="tpAccion == 1">
+        <p class="font-semibold text-gray-2000" v-text="titulo"></p>
         <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div class="mb-4">
             <label
@@ -273,6 +279,7 @@
 
           <div class="flex items-center justify-between">
             <button
+              v-if="opcBoton == true"
               type="button"
               @click="regProductos()"
               class="
@@ -289,9 +296,28 @@
               Guardar
             </button>
           </div>
-          <br>
-           
-           
+          <br />
+
+          <button
+            v-if="opcBoton == false"
+            type="button"
+            @click="actualizarProducto()"
+            class="
+              bg-blue-500
+              hover:bg-blue-700
+              text-white
+              font-bold
+              py-2
+              px-4
+              rounded
+              focus:outline-none focus:shadow-outline
+            "
+          >
+            actualizar
+          </button>
+          <br />
+
+          <div class="flex items-center justify-between">
             <button
               type="button"
               @click="cerrarP()"
@@ -308,8 +334,122 @@
             >
               Cerrar
             </button>
-          
+          </div>
+          <br />
         </form>
+      </div>
+    </div>
+
+    <!-- mensaje de eliminar -->
+    <div v-if="tpAccion == 2">
+      <div
+        class="
+          flex flex-col
+          space-y-4
+          min-w-screen
+          h-screen
+          animated
+          fadeIn
+          faster
+          fixed
+          left-0
+          top-0
+          flex
+          justify-center
+          items-center
+          inset-0
+          z-50
+          outline-none
+          focus:outline-none
+          bg-gray-900
+        "
+      >
+        <div
+          class="
+            flex flex-col
+            p-8
+            bg-white
+            shadow-md
+            hover:shodow-lg
+            rounded-2xl
+          "
+        >
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="
+                  w-16
+                  h-16
+                  rounded-2xl
+                  p-3
+                  border border-blue-100
+                  text-blue-400
+                  bg-blue-50
+                "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <div class="flex flex-col ml-3">
+                <div class="font-medium leading-none">
+                  Desea eliminar el producto ?{{ nomProducto }}
+                </div>
+                <p class="text-sm text-gray-600 leading-none mt-1">
+                  Este proceso no es reversible
+                </p>
+              </div>
+            </div>
+            <button
+              @click="destroyProducto"
+              class="
+                flex-no-shrink
+                bg-red-500
+                px-5
+                ml-4
+                py-2
+                text-sm
+                shadow-sm
+                hover:shadow-lg
+                font-medium
+                tracking-wider
+                border-2 border-red-500
+                text-white
+                rounded-full
+              "
+            >
+              Si
+            </button>
+
+            <button
+              @click="cerrarP"
+              class="
+                flex-no-shrink
+                bg-blue-500
+                px-5
+                ml-4
+                py-2
+                text-sm
+                shadow-sm
+                hover:shadow-lg
+                font-medium
+                tracking-wider
+                border-2 border-blue-500
+                text-white
+                rounded-full
+              "
+            >
+              No
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </app-layout>
@@ -328,18 +468,23 @@ export default defineComponent({
   data() {
     return {
       tpAccion: 0,
+      idProducto: 0,
       cantidad: 0,
       nombre: "",
       medida: 0,
       categoria: "",
       arrayData: [],
-      modal:false,
-      titulo:"",
+      modal: false,
+      titulo: "",
+      opcBoton: true,
+      nomProducto: "",
     };
   },
   props: ["productos"],
 
   methods: {
+
+
     listarDatos() {
       let me = this;
       var url = "/api/producto/data";
@@ -354,12 +499,10 @@ export default defineComponent({
           console.log(error);
         });
     },
-    metodo(msj) {
-      alert(msj);
-    },
-
-    regProductos() {
+   
+regProductos() {
       let me = this;
+
       var url = "/api/producto/registrar";
       axios
         .post(url, {
@@ -371,47 +514,88 @@ export default defineComponent({
         .then(function (response) {
           alert("registro guardado exitosamente");
           this.listarDatos();
+          this.cerrarP();
         })
         .catch(function (error) {
           console.log(error.message);
         });
     },
 
-    verProducto() {
-      alert("Boton ver ok");
+    actualizarProducto() {
+      let me = this;
+      var url = "/api/producto/actualizar";
+      axios
+        .put(url, {
+          id: this.idProducto,
+          cantidad: this.cantidad,
+          nombre: this.nombre,
+          medida: this.medida,
+          categoria: this.categoria,
+        })
+        .then(function (response) {
+          alert("registro actualizado exitosamente");
+
+          this.listarDatos();
+        })
+        .catch(function (error) {
+          console.log(error.message);
+        });
+    },
+editarProducto(data = []) {
+      this.tpAccion = 1;
+      this.opcBoton = false;
+      this.titulo = "Actualizar producto";
+
+      this.idProducto = data["id"];
+      this.nombre = data["nombre"];
+      this.cantidad = data["cantidad"];
+      this.medida = data["medida"];
+      this.categoria = data["categoria"];
+    },
+    
+  
+   
+    destroyProducto() {
+      let me = this;
+      var url = "/api/producto/eliminar";
+      axios
+        .post(url, {
+          id: this.idProducto,
+        })
+        .then(function (response) {
+          me.listarDatos();
+
+          alert("eliminado exitosamente");
+          me.cerrarP();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    eliminarProducto(data = []) {
+      this.tpAccion = 2;
+      this.idProducto = data["id"];
+      this.nomProducto = data["nombre"];
+      this.title = "";
+
+      
     },
 
-    nuevoP(){
-      this.tpAccion=1;
-
-
+     nuevoP() {
+      this.tpAccion = 1;
+      this.titulo = "Registro nuevo producto";
     },
 
-    cerrarP(){
-      this.tpAccion=0;
-
-    }
-
+    cerrarP() {
+      this.tpAccion = 0;
+      location.reload();
+    },
     
   },
   mounted() {
     this.listarDatos();
   },
 
-  // nuevo()
-  //               {
-  //                   this.titulo = "Nuevo Registro";
-  //                   this.modal = true;
-  //               },
-
-  // abrirModal()
-  //               {
-  //                   let me=this;
-  //                   this.titulo = "Nuevo Registro"
-  //                   this.modal = true;
-  //                   me.limpiar();
-  //                   this.tpAccion=0;
-  //                   this.nombre="";
-  //               },
+ 
 });
 </script>
