@@ -6,7 +6,7 @@
       </h2>
     </template>
 
-    <button
+    <button v-if="tpAccion==0"
       @click="nuevoP"
       type="button"
       class="
@@ -162,7 +162,7 @@
       </div>
     </div>
 
-    <h1>prueba de formulario</h1>
+    <!-- <h1>prueba de formulario</h1> -->
 
     <div>
       <div class="w-full max-w-m"  v-if="tpAccion == 1" >
@@ -289,6 +289,26 @@
               Guardar
             </button>
           </div>
+          <br>
+           
+           
+            <button
+              type="button"
+              @click="cerrarP()"
+              class="
+                bg-gray-500
+                hover:bg-black-700
+                text-white
+                font-bold
+                py-2
+                px-4
+                rounded
+                focus:outline-none focus:shadow-outline
+              "
+            >
+              Cerrar
+            </button>
+          
         </form>
       </div>
     </div>
@@ -366,6 +386,11 @@ export default defineComponent({
 
 
     },
+
+    cerrarP(){
+      this.tpAccion=0;
+
+    }
 
     
   },
