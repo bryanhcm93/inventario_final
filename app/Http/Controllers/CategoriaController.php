@@ -6,13 +6,23 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
+   
     public function index(){
         
-        $categoria = Categoria::get();
-        return [
-            'Categorias' => $categoria
-        ];
+        $categoria = Categoria::all();
+        return Inertia::render('Categorias',['Categorias' => $categoria]);
+
+      
     }
+
+    public function indexData(){
+        
+        $categoria = Categoria::all();
+       
+            return [
+                'Categorias' =>$categoria
+            ];
+        }
 
 
 

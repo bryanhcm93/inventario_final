@@ -16,7 +16,14 @@ class ClienteController extends Controller
         //     'Clientes' => $cliente
         // ];
     }
-
+    public function indexData(){
+        
+        $cliente = Cliente::all();
+       
+            return [
+                'clientes' =>$cliente
+            ];
+        }
 
 
     public function store (Request $request){

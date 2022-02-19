@@ -16,6 +16,15 @@ return Inertia::render('Empleados',['Empleados'=>$empleado]);
         // ];
     }
 
+    public function indexData(){
+        
+        $empleado = Empleado::all();
+       
+            return [
+                'Empleados' =>$empleado
+            ];
+        }
+
 
 
     public function store (Request $request){
@@ -23,7 +32,7 @@ return Inertia::render('Empleados',['Empleados'=>$empleado]);
        
        $empleado->nombre_empleado = $request->nombreEmpleado;
        $empleado->telefono_empleado = $request->telefonoEmpleado;
-       $empleado->nombre_cargo = $request->nombreCargo;
+       $empleado->nombre_cargo = $request->cargoEmpleado;
        
          
 
@@ -34,7 +43,7 @@ return Inertia::render('Empleados',['Empleados'=>$empleado]);
         $empleado = Empleado::findOrFail($request->id);
         $empleado->nombre_empleado = $request->nombreEmpleado;
        $empleado->telefono_empleado = $request->telefonoEmpleado;
-       $empleado->nombre_cargo = $request->nombreCargo;
+       $empleado->nombre_cargo = $request->cargoEmpleado;
 
 
         $empleado->save();

@@ -515,9 +515,10 @@ regProductos() {
           categoria: this.categoria,
         })
         .then(function (response) {
+          me.cerrarP();
           alert("registro guardado exitosamente");
           this.listarDatos();
-          this.cerrarP();
+         
         })
         .catch(function (error) {
           console.log(error.message);
@@ -536,6 +537,7 @@ regProductos() {
           categoria: this.categoria,
         })
         .then(function (response) {
+          me.cerrarP();
           alert("registro actualizado exitosamente");
 
           this.listarDatos();

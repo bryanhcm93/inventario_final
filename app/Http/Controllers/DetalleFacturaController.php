@@ -6,13 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\DetalleFactura;
 class DetalleFacturaController extends Controller
 {
+  
     public function index(){
         
-        $detallefactura = DetalleFactura::get();
-        return [
-            'DetalleFacturas' => $detallefactura
-        ];
+        $detallefactura = DetalleFactura::all();
+        return Inertia::render('DetalleFacturas',['DetalleFacturas' => $detallefactura]);
+
+      
     }
+
+    public function indexData(){
+        
+        $detallefactura = DetalleFactura::all();
+       
+            return [
+                'DetalleFacturas' =>$detallefactura
+            ];
+        }
 
 
 

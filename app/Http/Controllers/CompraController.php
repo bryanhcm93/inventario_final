@@ -6,13 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Compra;
 class CompraController extends Controller
 {
+   
     public function index(){
         
-        $compra = Compra::get();
-        return [
-            'Compras' => $compra
-        ];
+        $compra = Compra::all();
+        return Inertia::render('Compras',['Compras' => $compra]);
+
+      
     }
+
+    public function indexData(){
+        
+        $compra = Compra::all();
+       
+            return [
+                'Compras' =>$compra
+            ];
+        }
 
 
 

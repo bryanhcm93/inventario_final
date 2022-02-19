@@ -6,13 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Pedido;
 class PedidoController extends Controller
 {
+   
     public function index(){
         
-    $pedido = Pedido::get();
-        return [
-            'Pedidos' =>$pedido
-        ];
+        $pedido = Pedido::all();
+        return Inertia::render('Pedidos',['Pedidos' => $pedido]);
+
+      
     }
+
+    public function indexData(){
+        
+        $pedido = Pedido::all();
+       
+            return [
+                'Pedidos' =>$pedido
+            ];
+        }
 
 
 

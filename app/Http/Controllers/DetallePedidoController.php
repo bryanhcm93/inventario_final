@@ -7,13 +7,23 @@ use App\Models\DetallePedido;
 
 class DetallePedidoController extends Controller
 {
+   
     public function index(){
         
-        $detallepedido = DetallePedido::get();
-        return [
-            'DetallePedidos' => $detallepedido
-        ];
+        $detallepedido = DetallePedido::all();
+        return Inertia::render('DetallePedidos',['DetallePedidos' => $detallepedido]);
+
+      
     }
+
+    public function indexData(){
+        
+        $detallepedido = DetallePedido::all();
+       
+            return [
+                'DetallePedidos' =>$detallepedido
+            ];
+        }
 
 
 

@@ -7,13 +7,23 @@ use Illuminate\Http\Request;
 class CargoController extends Controller
 {
      //
+   
      public function index(){
         
-        $cargo = Cargo::get();
-        return [
-            'Cargos' => $cargo
-        ];
+        $cargo = Cargo::all();
+        return Inertia::render('Cargos',['Cargos' => $cargo]);
+
+      
     }
+
+    public function indexData(){
+        
+        $cargo = Cargo::all();
+       
+            return [
+                'Cargos' =>$cargo
+            ];
+        }
 
 
 

@@ -44,77 +44,87 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 /////////////////////////////ruta cargo///////////////////////////////////////////
 Route::middleware(['auth:sanctum'])->get('/api/cargo', [CargoController::class, 'index'])->name('cargo')->name('cargo');
+Route::middleware(['auth:sanctum'])->get('/api/cargo/data', [CargoController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/cargo/registrar', [CargoController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/cargo/actualizar', [CargoController::class, 'update']);
-Route::middleware(['auth:sanctum'])->delete('/api/cargo/eliminar', [CargoController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->post('/api/cargo/eliminar', [CargoController::class, 'destroy']);
 
 ///////////////////////////ruta categoria///////////////////////////////////////////
 Route::middleware(['auth:sanctum'])->get('/api/categoria', [CategoriaController::class, 'index'])->name('categoria');
+Route::middleware(['auth:sanctum'])->get('/api/categoria/data', [CategoriaController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/categoria/registrar', [CategoriaController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/categoria/actualizar', [Categoriatroller::class, 'update']);
-Route::middleware(['auth:sanctum'])->delete('/api/categoria/eliminar', [CategoriaController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->post('/api/categoria/eliminar', [CategoriaController::class, 'destroy']);
 
 //////////////////////////ruta cliente ////////////////////////////////////////
 
 Route::middleware(['auth:sanctum'])->get('/api/cliente', [ClienteController::class, 'index'])->name('cliente');
+Route::middleware(['auth:sanctum'])->get('/api/cliente/data', [ClienteController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/cliente/registrar', [ClienteController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/cliente/actualizar', [ClienteController::class, 'update']);
-Route::middleware(['auth:sanctum'])->delete('/api/cliente/eliminar', [ClienteController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->post('/api/cliente/eliminar', [ClienteController::class, 'destroy']);
 
 //////////////////////// ruta compra ///////////////////////////////////
 
 Route::middleware(['auth:sanctum'])->get('/api/compra', [CompraController::class, 'index'])->name('compra');
+Route::middleware(['auth:sanctum'])->get('/api/compra/data', [CompraController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/compra/registrar', [CompraController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/compra/actualizar', [CompraController::class, 'update']);
-Route::middleware(['auth:sanctum'])->delete('/api/compra/eliminar', [CompraController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->post('/api/compra/eliminar', [CompraController::class, 'destroy']);
 
 ///////////////////////// ruta Detella compra////////////////////////
 
 Route::middleware(['auth:sanctum'])->get('/api/detallecompra', [DetalleCompraController::class, 'index'])->name('detallecompra');
+Route::middleware(['auth:sanctum'])->get('/api/detallecompra/data', [DetalleCompraController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/detallecompra/registrar', [DetalleCompraController::class, 'store']);
 Route::middleware(['auth:sanctum'])->post('/api/detallecompra/registrar', [DetalleCompraController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/detallecompra/actualizar', [DetalleCompraController::class, 'update']);
-Route::middleware(['auth:sanctum'])->delete('/api/detallecompra/eliminar', [DetalleCompraController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->post('/api/detallecompra/eliminar', [DetalleCompraController::class, 'destroy']);
 
 //////////////////////// ruta detalle factura /////////////////////
  
 
 Route::middleware(['auth:sanctum'])->get('/api/detallefactura', [DetalleFacturaController::class, 'index'])->name('detallefactura');
+Route::middleware(['auth:sanctum'])->get('/api/detallefactura/data', [DetalleFacturaController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/detallefactura/registrar', [DetalleFacturaController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/detallefactura/actualizar', [DetalleFacturaController::class, 'update']);
-Route::middleware(['auth:sanctum'])->delete('/api/detallefactura/eliminar', [DetalleFacturaController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->post('/api/detallefactura/eliminar', [DetalleFacturaController::class, 'destroy']);
 
 //////////////////// ruta detalle pedido ///////////////////////
 
 Route::middleware(['auth:sanctum'])->get('/api/detallepedido', [DetallePedidoController::class, 'index'])->name('detallepedido');
+Route::middleware(['auth:sanctum'])->get('/api/detallepedido/data', [DetallePedidoController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/detallepedido/registrar', [DetallePedidoController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/detallepedido/actualizar', [DetallePedidoController::class, 'update']);
-Route::middleware(['auth:sanctum'])->delete('/api/detallepedido/eliminar', [DetallepedidoController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->post('/api/detallepedido/eliminar', [DetallepedidoController::class, 'destroy']);
 
 /////////////////////// ruta empleado ////////////////////////////////////////////
 
 
 Route::middleware(['auth:sanctum'])->get('/api/empleado', [EmpleadoController::class, 'index'])->name('empleado');
+Route::middleware(['auth:sanctum'])->get('/api/empleado/data', [EmpleadoController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/empleado/registrar', [EmpleadoController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/empleado/actualizar', [EmpleadoController::class, 'update']);
-Route::middleware(['auth:sanctum'])->delete('/api/empleado/eliminar', [EmpleadoController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->post('/api/empleado/eliminar', [EmpleadoController::class, 'destroy']);
 
 
 ///////////////////////////////// ruta factura ///////////////////////////////////////
 
 
 Route::middleware(['auth:sanctum'])->get('/api/factura', [FacturaController::class, 'index'])->name('factura');
+Route::middleware(['auth:sanctum'])->get('/api/factura/data', [FacturaController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/factura/registrar', [FacturaController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/factura/actualizar', [FacturaController::class, 'update']);
-Route::middleware(['auth:sanctum'])->delete('/api/factura/eliminar', [FacturaController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->post('/api/factura/eliminar', [FacturaController::class, 'destroy']);
 
 //////////////////////////////////// ruta pedido////////////////////////////////////////
 
 
 Route::middleware(['auth:sanctum'])->get('/api/pedido', [PedidoController::class, 'index'])->name('pedido');
+Route::middleware(['auth:sanctum'])->get('/api/pedido/data', [PedidoController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/pedido/registrar', [PedidoController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/pedido/actualizar', [PedidoController::class, 'update']);
-Route::middleware(['auth:sanctum'])->delete('/api/pedido/eliminar', [PedidoController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->post('/api/pedido/eliminar', [PedidoController::class, 'destroy']);
 
 
 ///////////////////////////////////// ruta producto /////////////////////////////////
@@ -130,8 +140,9 @@ Route::middleware(['auth:sanctum'])->post('/api/producto/eliminar', [ProductoCon
 /////////////////////////////////////// ruta proveedor /////////////////////////////
 
 Route::middleware(['auth:sanctum'])->get('/api/proveedor', [ProveedorController::class, 'index'])->name('proveedor');
+Route::middleware(['auth:sanctum'])->get('/api/proveedor/data', [ProveedorController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/proveedor/registrar', [ProveedorController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/proveedor/actualizar', [ProveedorController::class, 'update']);
-Route::middleware(['auth:sanctum'])->delete('/api/proveedor/eliminar', [ProveedorController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->post('/api/proveedor/eliminar', [ProveedorController::class, 'destroy']);
 
 

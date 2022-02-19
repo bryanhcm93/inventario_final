@@ -13,14 +13,12 @@ class ProveedorController extends Controller
         $proveedor = Proveedor::all();
         return Inertia::render('Proveedores',['Proveedores' => $proveedor]);
 
-        // return [
-        //     'Proveedores' => $proveedor
-        // ];
+      
     }
 
     public function indexData(){
         
-        $producto = Producto::all();
+        $proveedor = Proveedor::all();
        
             return [
                 'Proveedores' =>$proveedor
@@ -46,7 +44,7 @@ class ProveedorController extends Controller
         $proveedor->nit_proveedor = $request->nitProveedor;
         $proveedor->nombre_proveedor = $request->nombreProveedor;
        $proveedor->telefono_proveedor = $request->telefonoProveedor;
-       $proveedor->cargo_proveedor = $request->cargoProveedor;
+       $proveedor->direccion_proveedor = $request->direccionProveedor;
 
 
         $proveedor->save();
