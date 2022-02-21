@@ -381,7 +381,7 @@
               </svg>
               <div class="flex flex-col ml-3">
                 <div class="font-medium leading-none">
-                  Desea eliminar el producto ?{{ nomProducto }}
+                  Desea eliminar el producto ?{{ nomEmpleado }}
                 </div>
                 <p class="text-sm text-gray-600 leading-none mt-1">
                   Este proceso no es reversible
@@ -562,7 +562,7 @@ export default defineComponent({
     eliminarEmpleado(data = []) {
       this.tpAccion = 2;
       this.idEmpleado = data["id"];
-      this.nomEmpleado = data["nombre"];
+      this.nomEmpleado = data["nombre_empleado"];
       this.title = "";
 
       
