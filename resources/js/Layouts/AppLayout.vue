@@ -36,6 +36,10 @@
                                   <jet-nav-link :href="route('empleado')" :active="route().current('empleado')">
                                     Empleados
                                 </jet-nav-link>
+
+                                    <jet-nav-link :href="route('factura')" :active="route().current('factura')">
+                                    Facturas
+                                </jet-nav-link>
                                 
 
                             </div>

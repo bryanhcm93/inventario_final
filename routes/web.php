@@ -59,6 +59,7 @@ Route::middleware(['auth:sanctum'])->post('/api/categoria/eliminar', [CategoriaC
 //////////////////////////ruta cliente ////////////////////////////////////////
 
 Route::middleware(['auth:sanctum'])->get('/api/cliente', [ClienteController::class, 'index'])->name('cliente');
+Route::middleware(['auth:sanctum'])->get('/api/cliente/getCliente', [ClienteController::class, 'getCliente']);
 Route::middleware(['auth:sanctum'])->get('/api/cliente/data', [ClienteController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/cliente/registrar', [ClienteController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/cliente/actualizar', [ClienteController::class, 'update']);
@@ -90,7 +91,7 @@ Route::middleware(['auth:sanctum'])->post('/api/detallefactura/registrar', [Deta
 Route::middleware(['auth:sanctum'])->put('/api/detallefactura/actualizar', [DetalleFacturaController::class, 'update']);
 Route::middleware(['auth:sanctum'])->post('/api/detallefactura/eliminar', [DetalleFacturaController::class, 'destroy']);
 
-//////////////////// ruta detalle pedido ///////////////////////
+//////////////////// ruta detallepedido ///////////////////////
 
 Route::middleware(['auth:sanctum'])->get('/api/detallepedido', [DetallePedidoController::class, 'index'])->name('detallepedido');
 Route::middleware(['auth:sanctum'])->get('/api/detallepedido/data', [DetallePedidoController::class, 'indexData']);
@@ -131,6 +132,8 @@ Route::middleware(['auth:sanctum'])->post('/api/pedido/eliminar', [PedidoControl
 
 
 Route::middleware(['auth:sanctum'])->get('/api/producto', [ProductoController::class, 'index'])->name('producto');
+Route::middleware(['auth:sanctum'])->get('/api/producto/getProducto', [ProductoController::class, 'getProducto']);
+Route::middleware(['auth:sanctum'])->get('/api/producto/getProductoData', [ProductoController::class, 'getProductoData']);
 Route::middleware(['auth:sanctum'])->get('/api/producto/data', [ProductoController::class, 'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/producto/registrar', [ProductoController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/producto/actualizar', [ProductoController::class, 'update']);
@@ -144,5 +147,7 @@ Route::middleware(['auth:sanctum'])->get('/api/proveedor/data', [ProveedorContro
 Route::middleware(['auth:sanctum'])->post('/api/proveedor/registrar', [ProveedorController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/proveedor/actualizar', [ProveedorController::class, 'update']);
 Route::middleware(['auth:sanctum'])->post('/api/proveedor/eliminar', [ProveedorController::class, 'destroy']);
+
+
 
 

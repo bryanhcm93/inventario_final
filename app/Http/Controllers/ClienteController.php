@@ -40,6 +40,21 @@ class ClienteController extends Controller
        $cliente->save();
     }
 
+
+    public function getCliente(Request $request)
+    {
+
+      $cliente=Cliente::select('id','nombre_cliente','cedula_cliente')
+       ->get();
+       return[
+
+    'cliente'=>$cliente
+];
+
+
+    }
+
+
     public function update(Request $request) {
         $cliente = Cliente::findOrFail($request->id);
         $cliente->cedula_cliente = $request->cedulaCliente;

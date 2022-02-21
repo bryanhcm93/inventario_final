@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Factura;
+use Inertia\Inertia;
 class FacturaController extends Controller
 {
    
@@ -27,10 +28,15 @@ class FacturaController extends Controller
 
 
     public function store (Request $request){
+
+        
        $factura = new Factura();
-       
+    //    la acabo de agregar si algo borrarlo 1;31:19 video 15 de diciembre
+    //    $factura = id_cliente= $request->idCliente;
        $factura->cantidad = $request->cantidad;
-       $factura->precio = $request->precio;
+    //    $factura->precio = $request->precio;
+
+    $factura->precio=100000;
        
        
          

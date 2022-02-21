@@ -47,6 +47,7 @@
                 <th class="py-3 px-6 text-left">Cantidad</th>
                 <th class="py-3 px-6 text-center">Medida</th>
                 <th class="py-3 px-6 text-center">categoria</th>
+                <th class="py-3 px-6 text-center">Precio</th>
                 <th class="py-3 px-6 text-center">Acciones</th>
               </tr>
             </thead>
@@ -77,6 +78,12 @@
                 <td class="py-3 px-6">
                   <div class="flex items-center">
                     <span class="font-medium">{{ objeto.categoria }}</span>
+                  </div>
+                </td>
+
+                <td class="py-3 px-6">
+                  <div class="flex items-center">
+                    <span class="font-medium">{{ objeto.precio }}</span>
                   </div>
                 </td>
 
@@ -194,7 +201,7 @@
                 focus:outline-none focus:shadow-outline
               "
               v-model="cantidad"
-              type="text"
+              type="number"
               placeholder="Cantidad"
             />
           </div>
@@ -246,7 +253,7 @@
                 focus:outline-none focus:shadow-outline
               "
               v-model="medida"
-              type="text"
+              type="number"
               placeholder="Medida"
             />
           </div>
@@ -277,30 +284,64 @@
             />
           </div>
 
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="Categoria"
+            >
+              Precio
+            </label>
+            <input
+              class="
+                shadow
+                appearance-none
+                border
+                rounded
+                w-full
+                py-2
+                px-3
+                text-gray-700
+                leading-tight
+                focus:outline-none focus:shadow-outline
+              "
+              v-model="precio"
+              type="number"
+              placeholder="Precio"
+            />
+          </div>
+
           <!-- <div class="flex items-center justify-between">
             
           </div> -->
-         
 
-          <div class="flex flex-row items-center justify-end p-5 bg-white border-gray-200">
-            <button
-            v-if="opcBoton == false"
-            type="button"
-            @click="actualizarProducto()"
+          <div
             class="
-              bg-blue-500
-              hover:bg-blue-700
-              text-white
-              font-bold
-              py-2
-              px-4
-               mr-5
-              rounded
-              focus:outline-none focus:shadow-outline
+              flex flex-row
+              items-center
+              justify-end
+              p-5
+              bg-white
+              border-gray-200
             "
           >
-            Actualizar
-          </button>
+            <button
+              v-if="opcBoton == false"
+              type="button"
+              @click="actualizarProducto()"
+              class="
+                bg-blue-500
+                hover:bg-blue-700
+                text-white
+                font-bold
+                py-2
+                px-4
+                mr-5
+                rounded
+                focus:outline-none focus:shadow-outline
+              "
+            >
+              Actualizar
+            </button>
 
             <button
               type="button"
@@ -476,6 +517,7 @@ export default defineComponent({
       nombre: "",
       medida: 0,
       categoria: "",
+      precio: 0,
       arrayData: [],
       modal: false,
       titulo: "",
@@ -486,8 +528,6 @@ export default defineComponent({
   props: ["productos"],
 
   methods: {
-
-
     listarDatos() {
       let me = this;
       var url = "/api/producto/data";
@@ -502,8 +542,8 @@ export default defineComponent({
           console.log(error);
         });
     },
-   
-regProductos() {
+
+    regProductos() {
       let me = this;
 
       var url = "/api/producto/registrar";
@@ -513,12 +553,12 @@ regProductos() {
           nombre: this.nombre,
           medida: this.medida,
           categoria: this.categoria,
+          precio: this.precio,
         })
         .then(function (response) {
           me.cerrarP();
           alert("registro guardado exitosamente");
           this.listarDatos();
-         
         })
         .catch(function (error) {
           console.log(error.message);
@@ -535,6 +575,7 @@ regProductos() {
           nombre: this.nombre,
           medida: this.medida,
           categoria: this.categoria,
+          precio: this.precio,
         })
         .then(function (response) {
           me.cerrarP();
@@ -546,7 +587,7 @@ regProductos() {
           console.log(error.message);
         });
     },
-editarProducto(data = []) {
+    editarProducto(data = []) {
       this.tpAccion = 1;
       this.opcBoton = false;
       this.titulo = "Actualizar producto";
@@ -556,10 +597,9 @@ editarProducto(data = []) {
       this.cantidad = data["cantidad"];
       this.medida = data["medida"];
       this.categoria = data["categoria"];
+      this.precio = data["precio"];
     },
-    
-  
-   
+
     destroyProducto() {
       let me = this;
       var url = "/api/producto/eliminar";
@@ -582,11 +622,9 @@ editarProducto(data = []) {
       this.idProducto = data["id"];
       this.nomProducto = data["nombre"];
       this.title = "";
-
-      
     },
 
-     nuevoP() {
+    nuevoP() {
       this.tpAccion = 1;
       this.titulo = "Registro nuevo producto";
     },
@@ -595,12 +633,9 @@ editarProducto(data = []) {
       this.tpAccion = 0;
       location.reload();
     },
-    
   },
   mounted() {
     this.listarDatos();
   },
-
- 
 });
 </script>

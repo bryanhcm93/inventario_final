@@ -231,7 +231,7 @@
                       focus:outline-none focus:shadow-outline
                     "
                     v-model="nitProveedor"
-                    type="text"
+                    type="number"
                     placeholder="Proveedor de la empresa"
                   />
                 </div>
@@ -283,7 +283,7 @@
                       focus:outline-none focus:shadow-outline
                     "
                     v-model="telefonoProveedor"
-                    type="text"
+                    type="number"
                     placeholder="Telefono empresa"
                   />
                 </div>

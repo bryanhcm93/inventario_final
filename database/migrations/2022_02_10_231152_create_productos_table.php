@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nombre',50);
             $table->string('medida',50);
             $table->string('categoria',50);
+            $table->integer('precio');
             $table->timestamps();
         });
     }

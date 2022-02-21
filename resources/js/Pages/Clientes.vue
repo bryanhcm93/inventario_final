@@ -247,7 +247,7 @@
                 focus:outline-none focus:shadow-outline
               "
               v-model="cedulaCliente"
-              type="text"
+              type="number"
               placeholder="Digite su numero de cedula"
             />
           </div>
